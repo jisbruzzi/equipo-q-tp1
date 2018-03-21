@@ -1,0 +1,3 @@
+*.o
+lein.bat
+target
