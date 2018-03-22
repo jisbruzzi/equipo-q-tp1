@@ -23,25 +23,6 @@ def agregarAHeap(heap,e):
     
     return heapRoto#esta arreglado
 
-h=[]
-h=agregarAHeap(h,1)
-print(h)
-h=agregarAHeap(h,9)
-print(h)
-h=agregarAHeap(h,15)
-print(h)
-h=agregarAHeap(h,2)
-print(h)
-h=agregarAHeap(h,15)
-print(h)
-h=agregarAHeap(h,18)
-print(h)
-h=agregarAHeap(h,19)
-print(h)
-h=agregarAHeap(h,0.3)
-print(h)
-h=agregarAHeap(h,45)
-print(h)
 
 def arbolLocalEsHeap(heap,ie):
     iHojaIzq=ie*2+1
@@ -71,8 +52,11 @@ def iMayorHijo(heap,ie):
     
 
 
-def quitarCabezaDeHeap(heap):
-    heap=list(heap)
+def quitarCabezaDeHeap(heapAnterior):
+    if len(heapAnterior)==1:
+        return []
+    
+    heap=list(heapAnterior)
     heap[0]=heap.pop()
 
     ie=0#empieza arriba
@@ -90,22 +74,17 @@ def quitarCabezaDeHeap(heap):
     return heap
 
 
+def heapsort(lista):
+    heap=[]
+    for e in lista:
+        heap=agregarAHeap(heap,e)
 
+    listaOrdenada=[]
+    while len(heap)>0:
+        listaOrdenada=[heap[0]]+listaOrdenada
+        heap = quitarCabezaDeHeap(heap)
+    
+    return listaOrdenada
     
 
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
-h=quitarCabezaDeHeap(h)
-print(h)
+print(heapsort([8,7,15,24,0.5,3,0.1,97]))
