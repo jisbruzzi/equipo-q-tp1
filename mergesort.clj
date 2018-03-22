@@ -27,7 +27,7 @@
             mitad1 (take q lista)
             mitad2 (drop q lista)
         ]
-            (merge (mergesort mitad1) (mergesort mitad2))
+            (mergear (mergesort mitad1) (mergesort mitad2))
         )
     
     )
