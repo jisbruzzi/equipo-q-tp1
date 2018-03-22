@@ -8,15 +8,15 @@ VACANCIES_PER_TEAM = 10
 preferences = []
 
 # create an array of random numbers from 0 to NUM_OF_PLAYERS for each team.
-for i in range(0,NUM_OF_TEAMS):
-    preferences.append(random.choice(NUM_OF_PLAYERS, size=NUM_OF_PLAYERS, replace=False))
+for i in range(NUM_OF_TEAMS):
+    preferences.append(random.choice(NUM_OF_PLAYERS, size=NUM_OF_PLAYERS, replace=False) + 1)
 
 
 # save data to files
 base_filename = "equipo_"
 
-for i in range(0, NUM_OF_TEAMS):
-    current_filename = base_filename + str(i) + ".prf"
+for i in range(NUM_OF_TEAMS):
+    current_filename = base_filename + str(i+1) + ".prf"
     f = open(current_filename, 'w')
     for j in range(NUM_OF_PLAYERS):
         f.write(str(preferences[i][j]) + '\n')
