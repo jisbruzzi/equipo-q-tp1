@@ -1,3 +1,4 @@
 *.o
 lein.bat
 target
+equipo_*
