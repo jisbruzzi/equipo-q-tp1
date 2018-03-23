@@ -1,5 +1,11 @@
 #esto lo que hace es agarrar un archivo.py y ejecutar las pruebas.
 #ejecuta el metodo "ordenar" del modulo indicado
+#
+# POR EJEMPLO PARA PROBAR HEAPSORT:
+# python probador.py heapsort resultados/heapsort.csv
+#
+# heapsort.py debe tener un método "ordenar" que acepete una lista y la devuelva ordenada, nada más!
+
 
 from importlib import import_module
 import time
@@ -30,7 +36,7 @@ with open(nombreRporte,"w") as reporte:
         for cantidad in cantidades:
             resultados.append(str(probar(nombreModulo,nArchivo,cantidad)))
             print(cantidad)
-        reporte.write(nArchivo+","+",".join(resultados))
+        reporte.write(nArchivo+","+",".join(resultados)"\n")
 
             
 
