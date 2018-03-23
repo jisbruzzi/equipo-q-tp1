@@ -4,7 +4,7 @@
 # POR EJEMPLO PARA PROBAR HEAPSORT:
 # python probador.py heapsort resultados/heapsort.csv
 #
-# heapsort.py debe tener un método "ordenar" que acepete una lista y la devuelva ordenada, nada más!
+# heapsort.py debe tener un metodo "ordenar" que acepete una lista y la devuelva ordenada, nada mas!
 
 
 from importlib import import_module
@@ -36,7 +36,7 @@ with open(nombreRporte,"w") as reporte:
         for cantidad in cantidades:
             resultados.append(str(probar(nombreModulo,nArchivo,cantidad)))
             print(cantidad)
-        reporte.write(nArchivo+","+",".join(resultados)"\n")
+        reporte.write(nArchivo+","+",".join(resultados)+"\n")
 
             
 
