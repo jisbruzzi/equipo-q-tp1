@@ -85,6 +85,7 @@ def heapsort(lista):
         heap = quitarCabezaDeHeap(heap)
     
     return listaOrdenada
-    
 
-print(heapsort([8,7,15,24,0.5,3,0.1,97]))
+
+def ordenar(lista):
+    return heapsort(lista)
