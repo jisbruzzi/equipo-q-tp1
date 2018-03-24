@@ -1,4 +1,12 @@
+#IDE files
+.idea/
+
+# Python files
+*__pycache__/
+
 *.o
 lein.bat
 target
-equipo_*
+
+# Randomly generated preferences lists
+*.prf
