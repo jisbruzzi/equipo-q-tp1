@@ -18,6 +18,7 @@ def gale_shapely(team_prefs: dict, player_prefs: dict, vacants: int) -> set:
 
     teams_queue = Queue(*[team for team in teams])
 
+    player_prefs = player_prefs.copy()
     for key in player_prefs:
         player_prefs[key] = {item: i for i, item in enumerate(player_prefs[key])}
 
