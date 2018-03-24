@@ -4,9 +4,14 @@
 # Python files
 *__pycache__/
 
-*.o
-lein.bat
-target
 
 # Randomly generated preferences lists
 *.prf
+
+# Workspace
+wks.*
+
+
+*.o
+lein.bat
+target
