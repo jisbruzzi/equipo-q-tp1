@@ -1,90 +1,90 @@
 import math
 
-def agregarAHeap(heap,e):
-    heapRoto=heap[:]
-    heapRoto.append(e)
 
-    ie=len(heapRoto)-1
-    iRaizLocal=int(math.floor(ie/2))
+def agregar_a_heap(heap, e):
+    heap_roto = heap[:]
+    heap_roto.append(e)
 
-    while heapRoto[iRaizLocal]<heapRoto[ie]: #implicito: rompe cuando iRaizLocal=ie=0
+    ie = len(heap_roto) - 1
+    i_raiz_local = int(math.floor(ie / 2))
 
-        #intercambio
+    while heap_roto[i_raiz_local] < heap_roto[ie]:  # implicito: rompe cuando i_raiz_local=ie=0
 
-        eRaizLocal=heapRoto[iRaizLocal]
-        e=heapRoto[ie]
+        # intercambio
 
-        heapRoto[iRaizLocal]=e
-        heapRoto[ie]=eRaizLocal
+        e_raiz_local = heap_roto[i_raiz_local]
+        e = heap_roto[ie]
 
-        #preparar ie e iRaizLocal
-        ie=iRaizLocal
-        iRaizLocal=int(math.floor(ie/2))
-    
-    return heapRoto#esta arreglado
+        heap_roto[i_raiz_local] = e
+        heap_roto[ie] = e_raiz_local
 
+        # preparar ie e i_raiz_local
+        ie = i_raiz_local
+        i_raiz_local = int(math.floor(ie / 2))
 
-def arbolLocalEsHeap(heap,ie):
-    iHojaIzq=ie*2+1
-    iHojaDer=ie*2+2
-    esHeap=True
-    if iHojaIzq<len(heap) and heap[iHojaIzq]>heap[ie]:
-        esHeap=False
-    if iHojaDer<len(heap) and heap[iHojaDer]>heap[ie]:
-        esHeap=False
-    return esHeap
+    return heap_roto  # esta arreglado
 
 
-def iMayorHijo(heap,ie):
-    iHojaIzq=ie*2+1
-    iHojaDer=ie*2+2
+def arbol_local_es_heap(heap, ie):
+    i_hoja_izq = ie * 2 + 1
+    i_hoja_der = ie * 2 + 2
+    es_heap = True
+    if i_hoja_izq < len(heap) and heap[i_hoja_izq] > heap[ie]:
+        es_heap = False
+    if i_hoja_der < len(heap) and heap[i_hoja_der] > heap[ie]:
+        es_heap = False
+    return es_heap
 
-    
-    if iHojaIzq<len(heap) and iHojaDer<len(heap):
-        return iHojaIzq if heap[iHojaIzq]>heap[iHojaDer] else iHojaDer #intercambio la cabeza con la mayor hoja
+
+def i_mayor_hijo(heap, ie):
+    i_hoja_izq = ie * 2 + 1
+    i_hoja_der = ie * 2 + 2
+
+    if i_hoja_izq < len(heap) and i_hoja_der < len(heap):
+        # intercambio la cabeza con la mayor hoja
+        return i_hoja_izq if heap[i_hoja_izq] > heap[i_hoja_der] else i_hoja_der
     else:
-        if iHojaIzq<len(heap):
-            return iHojaIzq
-        if iHojaDer<len(heap):
-            return iHojaDer
+        if i_hoja_izq < len(heap):
+            return i_hoja_izq
+        if i_hoja_der < len(heap):
+            return i_hoja_der
         else:
             return -1
-    
 
 
-def quitarCabezaDeHeap(heapAnterior):
-    if len(heapAnterior)==1:
+def quitar_cabeza_de_heap(heap_anterior):
+    if len(heap_anterior) == 1:
         return []
-    
-    heap=list(heapAnterior)
-    heap[0]=heap.pop()
 
-    ie=0#empieza arriba
-    while not arbolLocalEsHeap(heap,ie):
-        iIntercambiar = iMayorHijo(heap,ie)
+    heap = list(heap_anterior)
+    heap[0] = heap.pop()
 
-        eRaizLocal=heap[ie]
-        eIntercambiar=heap[iIntercambiar]
+    ie = 0  # empieza arriba
+    while not arbol_local_es_heap(heap, ie):
+        i_intercambiar = i_mayor_hijo(heap, ie)
 
-        heap[ie]=eIntercambiar
-        heap[iIntercambiar]=eRaizLocal
+        e_raiz_local = heap[ie]
+        e_intercambiar = heap[i_intercambiar]
 
-        ie=iIntercambiar
+        heap[ie] = e_intercambiar
+        heap[i_intercambiar] = e_raiz_local
+
+        ie = i_intercambiar
 
     return heap
 
 
 def heapsort(lista):
-    heap=[]
+    heap = []
     for e in lista:
-        heap=agregarAHeap(heap,e)
+        heap = agregar_a_heap(heap, e)
 
-    listaOrdenada=[]
-    while len(heap)>0:
-        listaOrdenada=[heap[0]]+listaOrdenada
-        heap = quitarCabezaDeHeap(heap)
-    
-    return listaOrdenada
-    
+    lista_ordenada = []
+    while len(heap) > 0:
+        lista_ordenada = [heap[0]] + lista_ordenada
+        heap = quitar_cabeza_de_heap(heap)
 
-print(heapsort([8,7,15,24,0.5,3,0.1,97]))
+    return lista_ordenada
+
+
+print(heapsort([8, 7, 15, 24, 0.5, 3, 0.1, 97]))
