@@ -58,7 +58,7 @@ class GSTest(unittest.TestCase):
         }
 
         self.run_gs(p, t)
-    
+
     def run_gs(self, p, t):
         vacants = int(len(p) / len(t))
         matches = gale_shapely(t, p, vacants)

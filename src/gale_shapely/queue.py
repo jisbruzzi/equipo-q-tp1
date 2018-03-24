@@ -1,5 +1,6 @@
 #!coding=utf8
 
+
 class Queue:
     class Node:
         def __init__(self, value):
@@ -50,4 +51,3 @@ class Queue:
 
     def __bool__(self):
         return bool(self.size)
-

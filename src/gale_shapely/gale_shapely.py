@@ -47,4 +47,3 @@ def gale_shapely(team_prefs: dict, player_prefs: dict, vacants: int) -> set:
         teams_queue.pop()
 
     return set([(team, player) for player, team in final_set.items()])
-
