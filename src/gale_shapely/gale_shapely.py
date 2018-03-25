@@ -5,15 +5,15 @@
 from .queue import Queue
 
 
-def gale_shapely(team_prefs: dict, player_prefs: dict, vacants: int) -> set:
+def gale_shapely(team_prefs: dict, player_prefs: dict) -> set:
     """
 
     :param team_prefs: { team: [player1, player2, ...] , ... }
     :param player_prefs: { player: [team1, team2, ...], ... }
-    :param vacants: int con vacantes por equipo
     :return:
     """
 
+    vacants = int(len(player_prefs) / int(len(team_prefs)))
     teams = {team: {'prefs': team_prefs[team], 'current': 0, 'vacants': vacants} for team in team_prefs}
 
     teams_queue = Queue(*[team for team in teams])
