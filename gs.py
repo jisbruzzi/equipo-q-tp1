@@ -1,4 +1,10 @@
 #!coding=utf8
+"""
+Módulo de entrada al algoritmo de Gale-Shapely. Carga los archivos de preferencias
+en prefs/, los parsea y corre el algoritmo. Imprime los matches resultantes por salida estándar.
+"""
+
+
 import os
 
 from src.gale_shapely.gale_shapely import gale_shapely
