@@ -24,7 +24,7 @@ def gale_shapely(team_prefs: dict, player_prefs: dict) -> set:
 
     final_set = {}
     while teams_queue:
-        team = teams_queue.top()
+        team = teams_queue.pop()
         prefs = teams[team]['prefs']
         current = teams[team]['current']
         while teams[team]['vacants']:
@@ -44,6 +44,5 @@ def gale_shapely(team_prefs: dict, player_prefs: dict) -> set:
 
             current += 1
         teams[team]['current'] = current
-        teams_queue.pop()
 
     return set([(team, player) for player, team in final_set.items()])
