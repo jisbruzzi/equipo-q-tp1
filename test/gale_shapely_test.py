@@ -60,8 +60,8 @@ class GSTest(unittest.TestCase):
         self.run_gs(p, t)
 
     def run_gs(self, p, t):
-        vacants = int(len(p) / len(t))
-        matches = gale_shapely(t, p, vacants)
+        matches = gale_shapely(t, p)
+        self.assertNotEqual(len(matches), 0)
         for team, player in matches:
             for other_team in p[player][:p[player].index(team)]:
                 other_team_matches = filter(lambda x: x[0] == other_team, matches)
