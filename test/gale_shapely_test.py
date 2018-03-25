@@ -1,8 +1,8 @@
 #!coding=utf8
 import unittest
 
-from src.gale_shapely.gale_shapely import gale_shapely
 import random
+from src.gale_shapely.gale_shapely import gale_shapely
 
 
 class GSTest(unittest.TestCase):
@@ -89,7 +89,6 @@ class GSTest(unittest.TestCase):
 
                     team_prefers_other_player = t[team][other_player] < t[team][player]
                     other_player_prefers_team = p[other_player][team] < p[other_player][other_team]
-
 
                     self.assertFalse((player_prefers_other_team and other_team_prefers_player) or
                                      (team_prefers_other_player and other_player_prefers_team))
