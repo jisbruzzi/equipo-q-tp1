@@ -2,7 +2,7 @@
 
 set -e;
 
-pycodestyle src/
+pycodestyle .
 
 if [ $? -eq 0 ]; then
     echo "Codestyle OK";
