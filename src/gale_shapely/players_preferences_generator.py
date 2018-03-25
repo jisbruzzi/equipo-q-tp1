@@ -1,4 +1,4 @@
-from numpy import random 
+from numpy import random
 
 NUM_OF_PLAYERS = 200
 NUM_OF_TEAMS = 20
@@ -15,7 +15,7 @@ for i in range(NUM_OF_PLAYERS):
 base_filename = "jugador_"
 
 for i in range(NUM_OF_PLAYERS):
-    current_filename = base_filename + str(i+1) + ".prf"
+    current_filename = base_filename + str(i + 1) + ".prf"
     f = open(current_filename, 'w')
     for j in range(NUM_OF_TEAMS):
         f.write(str(preferences[i][j]) + '\n')
