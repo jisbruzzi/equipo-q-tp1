@@ -32,3 +32,7 @@ def mergesort(lista):
 
 if __name__ == '__main__':
     print(mergesort([80, 25, 17, 24, 99, 12, 1, 5, 5, 7, 8, 9, 21, 19, 18, 17, 16, 15]))
+
+
+def ordenar(lista):
+    return mergesort(lista)

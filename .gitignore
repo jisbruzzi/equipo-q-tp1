@@ -15,3 +15,5 @@ wks.*
 *.o
 lein.bat
 target
+
+*.pyc
