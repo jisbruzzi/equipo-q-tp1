@@ -28,7 +28,7 @@ nombreModulo = sys.argv[1]
 nombreRporte = sys.argv[2]
 cantidades = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
 with open(nombreRporte, "w") as reporte:
-    reporte.write(nombreModulo + "," + ",".join(map(str, cantidades)))  # encabezado
+    reporte.write(nombreModulo + "," + ",".join(map(str, cantidades)+"\n"))  # encabezado
 
     for nroArchivo in range(10):
         nArchivo = "sets/" + str(nroArchivo) + ".csv"
