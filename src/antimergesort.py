@@ -22,5 +22,6 @@ def antimergesort(ordenada):
     l1, l2 = antimerge(ordenada)
     return antimergesort(l1) + antimergesort(l2)
 
+
 def desordenar(ordenada):
     return antimergesort(ordenada)
