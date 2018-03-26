@@ -22,17 +22,5 @@ def antimergesort(ordenada):
     l1, l2 = antimerge(ordenada)
     return antimergesort(l1) + antimergesort(l2)
 
-
-def prueba(a):
-    q = antimergesort(a)
-    print(q)
-    print(mergesort.ordenar(q))
-
-
-prueba([1, 2, 3])
-print("********")
-prueba([1, 2, 3, 4])
-print("********")
-prueba([1, 2, 3, 4, 5, 6])
-print("********")
-prueba([1, 2, 3, 4, 5, 6, 7, 8])
+def desordenar(ordenada):
+    return antimergesort(ordenada)

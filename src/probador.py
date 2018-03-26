@@ -23,6 +23,7 @@ def probar(nombreModulo, nombreCsv, cantidad):
 
 print("primer argumento: modulo a probar")
 print("segundo argumento: archivo output")
+print("tercer argumento (opcional): posfijo de peor caso")
 
 nombreModulo = sys.argv[1]
 nombreRporte = sys.argv[2]
