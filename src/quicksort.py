@@ -11,8 +11,8 @@ if (inf<sup)
 	j=sup
 	cont=1
 	while cont
-		while (lista[i++]<elem_div)
-			while (lista[j--]>elem_div)
+		while (lista[i++] < elem_div)
+			while (lista[j--] > elem_div)
 				if (i<j)
 					swap (lista i j)
 				else
