@@ -1,5 +1,19 @@
+#IDE files
+.idea/
+
+# Python files
+*__pycache__/
+
+
+# Randomly generated preferences lists
+*.prf
+
+# Workspace
+wks.*
+
+
 *.o
 lein.bat
 target
+
 *.pyc
-equipo_*

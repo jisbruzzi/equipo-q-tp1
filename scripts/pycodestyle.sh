@@ -1,6 +1,8 @@
 #!/bin/sh
 
-pycodestyle src/
+set -e;
+
+pycodestyle .
 
 if [ $? -eq 0 ]; then
     echo "Codestyle OK";
