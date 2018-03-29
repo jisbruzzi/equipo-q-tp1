@@ -17,3 +17,7 @@ lein.bat
 target
 
 *.pyc
+
+# LATEX files
+*.log
+*.aux
