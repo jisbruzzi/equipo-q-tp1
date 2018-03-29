@@ -1,6 +1,6 @@
 #!coding=utf8
 
-# Implementación del algoritmo. Empecemos por la version 1:1...
+# Implementacion del algoritmo. Empecemos por la version 1:1...
 
 from .queue import Queue
 
@@ -14,7 +14,8 @@ def gale_shapely(team_prefs: dict, player_prefs: dict) -> set:
     """
 
     vacants = int(len(player_prefs) / int(len(team_prefs)))
-    teams = {team: {'prefs': team_prefs[team], 'current': 0, 'vacants': vacants} for team in team_prefs}
+    teams = {team: {'prefs': team_prefs[team], 'current': 0, 'vacants': vacants} \
+            for team in team_prefs}
 
     teams_queue = Queue(*[team for team in teams])
 
@@ -46,3 +47,4 @@ def gale_shapely(team_prefs: dict, player_prefs: dict) -> set:
         teams[team]['current'] = current
 
     return set([(team, player) for player, team in final_set.items()])
+
