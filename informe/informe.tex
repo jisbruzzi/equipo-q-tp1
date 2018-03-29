@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+% to install algorithm2e pckg: sudo apt-get install texlive-science
+\usepackage[]{algorithm2e}
+\usepackage{listings}
+\usepackage{color}
+
+\oddsidemargin = 1cm
+
+%\textsc{Facultad de Ingeniería, Universidad de Buenos Aires}
+
+\title{75.29 - Teoría de Algoritmos I: Trabajo Práctico n. 1}
+% Título principal del documento.
+
+% Información sobre los autores.
+\date{9.abril.2018}
+\author{
+\Large{Equipo Q:}\\
+\\
+        Gomez, Juan (\#87943)\\
+\\
+        Lavandeira, Lucas (\#98042)\\
+\\
+        Rozanec, Matias (\#97404)\\
+\\
+        Sbruzzi, Jose Ignacio (\#xxxxx)\\
+\\
+\\
+\\
+\\
+\normalsize{Facultad de Ingeniería, Universidad de Buenos Aires}\\
+}
+ 
+\begin{document}
+% Caratula
+\maketitle
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[scale=1]{fiuba_logo.png} 
+\end{figure}
+\thispagestyle{empty}
+\newpage
+
+% END CARATULA
+
+% CONSIGNA
+\section{Consigna}
+\subsection{Lineamientos básicos}
+\begin{itemize}
+    \item El trabajo se realizará en grupos de cuatro personas (excepcionalmente de tres).
+    \item La fecha de entrega es el lunes 9 de abril de 2018. Se debe entregar en el horario de clase en papel (informe + código en monoespacio), más una entrega en digital de código (.zip) e informe (.pdf) al correo de entregas del curso: tps.7529rw@gmail.com.
+    \item El lenguaje de implementación es libre, pero se debe comunicar por correo en caso de no ser uno de: C, C++, Python, Java, JavaScript, Ruby, Go, Rust, Swift, Scala, Haskell, OCaml, Clojure, D, Lua, Elixir.
+    \item Incluir en el informe los requisitos y procedimientos para su compilación y ejecución.
+\end{itemize}
+
+\part{Cálculo empírico de tiempos de ejecución}
+Implementar los siguientes algoritmos de ordenamiento para números enteros positivos:
+\begin{itemize}
+    \item Selección
+    \item Inserción
+    \item Quicksort
+    \item Heapsort
+    \item Mergesort
+\end{itemize}
+
+% renew command so that lists are shown with letters instead of numbers.
+\renewcommand{\theenumi}{\alph{enumi}}
+\begin{enumerate}
+    \item Para cada uno de ellos analizar su complejidad teórica y compararlos (tiempo promedio y peor tiempo). Tener en cuenta las constantes para la comparación.
+
+    \item Construir 10 sets de números aleatorios con 10.000 números positivos.
+
+    \item Calcular los tiempos de ejecución de cada algoritmo utilizando los primeros: 50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000 números de cada set.
+
+    \item Estimar los tiempos medios de ejecución para cada rango-algoritmo y graficar.
+
+    \item Determinar para cada algoritmo anterior las características que debe tener un set para que se comporte de la peor forma posible (si el algoritmo lo permite).
+
+    \item Construir para cada algoritmo y para los rangos del punto “C” sets con las peores características y evaluar los tiempos de ejecución. Comparar con los generados con los sets aleatorios y graficar.
+
+    \item En base a los tiempos obtenidos compare con los valores teóricos y analice (Extensión máxima de 2 párrafos).
+\end{enumerate}
+
+\part{Variante del algoritmo Gale-Shapley}
+Una liga amateur de Basketball tiene una manera extraña de iniciar la temporada. Un draft se realiza entre 200 jugadores anotados entre los 20 equipos que participaran. Tanto los jugadores como los equipos tienen una lista de preferencia donde establecen en orden decreciente sus elecciones. Cada listado es completo (tienen a todos los jugadores/equipos) y sin empates de preferencia. Se pretende construir un matching estable que termine con 20 equipos de 10 jugadores cada uno.
+
+\begin{enumerate}
+    \item Construir el algoritmo de Gale-Shapley modificado para cumplir el requerimiento.
+
+    \item Probar que el mismo terminará en tiempo polinómico y siempre entregará un matching estable.
+
+    \item Ejecutar el algoritmo utilizando un set construido especialmente para el caso.
+\end{enumerate}
+
+Información adicional:
+\begin{itemize}
+    \item Cada equipo contará con un archivo llamado “equipo\_[nro].prf” donde estarán en forma ordenada decreciente sus preferencias de jugadores.
+
+    \item Cada jugador contará con un archivo llamado “jugador\_[nro].prf” donde estarán en forma ordenada decreciente sus preferencias de equipos.
+
+    \item Los jugadores estarán identificados por números entre el 1 y el 200.
+
+    \item Los equipos estarán identificados por números entre el 1 y el 20.
+\end{itemize}
+
+% **** END CONSIGNA ****
+\newpage
+% RESOLUCION
+\section{Resolución}
+\part{Cálculo empírico de tiempos de ejecución}
+
+\part{Variante del algoritmo Gale-Shapley}
+\begin{enumerate}
+    \item A continuación se presenta el pseudo código del algoritmo desarrollado.\\
+        \begin{algorithm}[H]
+            \SetAlgoLined
+            \KwData{Prioridades de cada equipo y de cada jugador}
+            \KwResult{apareo óptimo entre equipos y jugadores}
+            inicialización\;
+            \While{el equipo Ei tenga posiciones libres}{
+             Ei le ofrece una posición a jugador Jk\;
+                \eIf{Jk está libre}{
+                    acepta la posición\;
+                }{
+                    \tcc{Jk está en Ej}
+                    \eIf{Jk prefiere a Ej}{
+                        se queda\;
+                    }{
+                        Jk se va a Ei
+                    }
+                }
+            }
+            \caption{Pseudo código del algoritmo Gale-Shapley modificado.}
+        \end{algorithm}
+        
+    A continuación se presenta el código implementado en Python.\\
+
+        \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+        \lstinputlisting[language=Python, basicstyle=\footnotesize, numbers=left, linewidth=15.4cm, frame=single, keepspaces=true, numberstyle=\tiny\color{mygray}]{../src/gale_shapely/gale_shapely.py}
+    \item 
+        \paragraph{Termina en tiempo polinómico}\mbox{}\\
+        Para probar que el algoritmo propuesto terminará en tiempo polinómico, primero calculamos la cantidad máxima de iteraciones posibles: 
+
+        $$\# max.\ de\ iteraciones = \# equipos * \# vacantes\ por\ equipo * \# jugadores$$
+
+        En nuestro caso:
+
+        $$ 20 * 10 * 200 = 40000$$
+
+        Esto significa que cada vacante de cada equipo le propone como máximo a todos los jugadores sin repetir.
+        \subparagraph{Función Variante}
+        $$ \# max.\ de\ iteraciones - \# total\ de\ ofertas\ hasta\ el\ momento$$
+
+        Esta función es estrictamente decreciente porque las ofertas no se repiten (son únicas). Por lo tanto queda probado que el algoritmo termina.
+
+        \paragraph{Matching perfecto}\mbox{}\\
+        El matching es perfecto si cada miembro de V aparece en un par de S. Como el algoritmo termina cuando no hay más vacantes disponibles, y además fue probado que el algoritmo termina, queda demostrado que no habrá elementos de V que no estén en S al finalizar el algoritmo. 
+
+        De la misma forma, al haber igual cantidad de jugadores que de vacantes y dos vacantes distintas no pueden ser ocupadas por un mismo jugador, queda probado que no quedarán jugadores libres.
+
+        \paragraph{Inestabilidades}\mbox{}\\
+        Supongamos inestabilidad $(e,p), (e',p') \in S /$ $$e\rightarrow [...,p',...p,...]$$ $$p'\rightarrow [...,e,...,e',...]$$
+        $(e,p) \in S \rightarrow $ e se postuló a $p$ y $p$ nunca lo echó.\\
+
+        ¿Se pudo haber postulado $e$ a $p'$? Si no lo hizo, entonces contradice el ranking.\\
+
+        $e$ se postuló a $p'$ y $p'$ lo rechazó.
+
+        Llegamos a una contradicción. Queda entonces probada la estabilidad del algoritmo.
+\end{enumerate}
+\end{document}
