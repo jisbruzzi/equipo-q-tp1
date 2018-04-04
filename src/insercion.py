@@ -1,4 +1,5 @@
-def insercion(lista):
+
+def ordenar(lista):
 	i=0
 	j=0
 	auxiliar=0
@@ -9,4 +10,4 @@ def insercion(lista):
 			lista[j]=lista[j-1]
 			lista[j-1]=auxiliar
 			j=j-1
-return lista		
+		
