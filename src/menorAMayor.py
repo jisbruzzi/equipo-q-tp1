@@ -1,6 +1,6 @@
-def menorAMayor(lista):
+def menor_a_mayor(lista):
     return sorted(lista)
-    
+
 
 def desordenar(lista):
-    return menorAMayor(lista)
+    return menor_a_mayor(lista)

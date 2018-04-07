@@ -30,4 +30,3 @@ def quicksort(lista, inf, sup):
 
 def ordenar(lista):
     return quicksort(lista, 0, len(lista) - 1)
-
