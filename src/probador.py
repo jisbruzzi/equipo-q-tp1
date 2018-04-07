@@ -1,13 +1,19 @@
 import sys
 from importlib import import_module
 import time
-import itertools
 
 # esto lo que hace es agarrar un archivo.py y ejecutar las pruebas.
 # ejecuta el metodo "ordenar" del modulo indicado
-#
+# 
 # POR EJEMPLO PARA PROBAR HEAPSORT:
-# python probador.py heapsort resultados/heapsort.csv
+# python src/probador.py heapsort resultados/heapsort.csv
+# POR EJEMPLO PARA PROBAR PERO CASO DE HEAPSORT:
+# python src/probador.py heapsort resultados/heapsort.csv menorAMayor
+#
+# PARA GENERAR LOS menorAMayor:
+# python src/deshacer.py menorAMayor
+# 
+# TODO ESTO ESTANDO PARADO EN LA RAÍZ DEL REPO
 #
 # heapsort.py debe tener un metodo "ordenar" que acepete una lista y la devuelva ordenada, nada mas!
 
@@ -29,12 +35,13 @@ print("tercer argumento (opcional): posfijo de peor caso")
 nombreModulo = sys.argv[1]
 nombreRporte = sys.argv[2]
 nombresArchivos = []
+import itertools
 
 if len(sys.argv) == 4:
     posfijo = sys.argv[3]
     nombresArchivos = map(lambda x: "sets/" + str(x) + posfijo + ".csv", range(10))
 else:
-    nombresArchivos = map(lambda x: "sets/" + str(x) + ".csv", range(10))
+    nombresArchivos=map(lambda x: "sets/" + str(x) + ".csv", range(10))
 
 print(nombresArchivos)
 cantidades = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
@@ -42,6 +49,7 @@ with open(nombreRporte, "w") as reporte:
     reporte.write(nombreModulo + "," + ",".join(map(str, cantidades)) + "\n")  # encabezado
 
     for nArchivo in nombresArchivos:
+        
         print("probando " + nArchivo)
         resultados = []
         for cantidad in cantidades:
