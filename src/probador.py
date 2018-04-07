@@ -13,7 +13,7 @@ import time
 # PARA GENERAR LOS menorAMayor:
 # python src/deshacer.py menorAMayor
 # 
-# TODO ESTO ESTANDO PARADO EN LA RAÍZ DEL REPO
+# TODO ESTO ESTANDO PARADO EN LA RAIZ DEL REPO
 #
 # heapsort.py debe tener un metodo "ordenar" que acepete una lista y la devuelva ordenada, nada mas!
 
