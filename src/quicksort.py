@@ -1,31 +1,33 @@
-def swap(lista, indice, indiceminimo):
-	aux=lista[indice]
-	lista[indice]=lista[indiceminimo]
-	lista[indiceminimo]=aux
+#!coding=utf8
 
-def quicksort(lista, inf, sup): #cuando se lo llama se lo invoca con inf=0 y sup=largo de la lista
-	if inf<sup:
-		elem_div=lista[sup]
-		i=inf-1
-		j=sup
-		cont=1
-		while cont:
-			i+=1
-			while i<len(lista) and lista[i] < elem_div:
-				j-=1
-				while lista[j] > elem_div:
-					if i<j:
-						swap (lista, i, j)
-					else:
-						cont=0 #actua como rompedor del while ya que los indices se cruzan
-		swap (lista, i, sup)
-		quicksort(lista, inf, i-1)
-		quicksort(lista, i+1, sup)
-	return lista
+from random import shuffle
+
+
+def partition(lista, inf, sup):
+    pivot = lista[sup]
+    index = inf - 1
+
+    for i in range(inf, sup):
+        if lista[i] <= pivot:
+            index += 1
+            lista[i], lista[index] = lista[index], lista[i]
+
+    lista[sup], lista[index + 1] = lista[index + 1], lista[sup]
+    return index + 1
+
+
+def quicksort(lista, inf, sup):
+    if inf < sup:
+        mid_point = partition(lista, inf, sup)
+        low_mid_point = mid_point
+        while inf < low_mid_point:
+            low_mid_point = partition(lista, inf, low_mid_point - 1)
+
+        while mid_point + 1 < sup:
+            mid_point = partition(lista, mid_point + 1, sup)
+    return lista
+
 
 def ordenar(lista):
-	return quicksort(lista,0,len(lista)-1)
-
-print(ordenar([3,2,1]))
-print(ordenar([7,4,1,10,11,3,22]))
+    return quicksort(lista, 0, len(lista) - 1)
 
