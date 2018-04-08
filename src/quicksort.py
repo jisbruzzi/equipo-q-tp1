@@ -1,8 +1,4 @@
 #!coding=utf8
-
-from random import shuffle
-
-
 def partition(lista, inf, sup):
     pivot = lista[sup]
     index = inf - 1
