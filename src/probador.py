@@ -19,7 +19,7 @@ import time
 
 
 def probar(module_name, csv_name, amt):
-    ordenar = getattr(import_module(module_name), "ordenar")
+    ordenar = getattr(import_module("search." + module_name), "ordenar")
     with open(csv_name, "r") as archivoCsv:
         lista = archivoCsv.read().split(",")[0:amt]
         lista = list(map(lambda x: float(x), lista))
@@ -28,30 +28,33 @@ def probar(module_name, csv_name, amt):
         return time.time() - time_start
 
 
-print("primer argumento: modulo a probar")
-print("segundo argumento: archivo output")
-print("tercer argumento (opcional): posfijo de peor caso")
+if __name__ == '__main__':
 
-nombre_modulo = sys.argv[1]
-nombre_reporte = sys.argv[2]
-nombres_archivos = []
+    print("primer argumento: modulo a probar")
+    print("segundo argumento: archivo output")
+    print("tercer argumento (opcional): posfijo de peor caso")
 
-if len(sys.argv) == 4:
-    posfijo = sys.argv[3]
-    nombres_archivos = map(lambda x: "sets/" + str(x) + posfijo + ".csv", range(10))
-else:
-    nombres_archivos = map(lambda x: "sets/" + str(x) + ".csv", range(10))
+    nombre_modulo = sys.argv[1]
+    nombre_reporte = sys.argv[2]
+    nombres_archivos = []
 
-print(nombres_archivos)
-cantidades = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
-with open(nombre_reporte, "w") as reporte:
-    reporte.write(nombre_modulo + "," + ",".join(map(str, cantidades)) + "\n")  # encabezado
+    if len(sys.argv) == 4:
+        posfijo = sys.argv[3]
+        nombres_archivos = map(lambda x: "sets/" + str(x) + posfijo + ".csv", range(10))
+    else:
+        nombres_archivos = map(lambda x: "sets/" + str(x) + ".csv", range(10))
 
-    for nArchivo in nombres_archivos:
+    nombres_archivos = list(nombres_archivos)
+    print(nombres_archivos)
+    cantidades = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
+    with open(nombre_reporte, "w") as reporte:
+        reporte.write(nombre_modulo + "," + ",".join(map(str, cantidades)) + "\n")  # encabezado
 
-        print("probando " + nArchivo)
-        resultados = []
-        for cantidad in cantidades:
-            resultados.append(str(probar(nombre_modulo, nArchivo, cantidad)))
-            print(cantidad)
-        reporte.write(nArchivo + "," + ",".join(resultados) + "\n")
+        for nArchivo in nombres_archivos:
+
+            print("probando " + nArchivo)
+            resultados = []
+            for cantidad in cantidades:
+                resultados.append(str(probar(nombre_modulo, nArchivo, cantidad)))
+                print(cantidad)
+            reporte.write(nArchivo + "," + ",".join(resultados) + "\n")
