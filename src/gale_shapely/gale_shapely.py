@@ -2,7 +2,7 @@
 from .queue import Queue
 
 
-def gale_shapely(team_prefs: dict, player_prefs: dict) -> set:
+def gale_shapely(team_prefs, player_prefs):
     """
 
     :param team_prefs: { team: [player1, player2, ...] , ... }
