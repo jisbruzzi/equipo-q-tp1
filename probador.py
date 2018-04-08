@@ -6,12 +6,12 @@ import time
 # ejecuta el metodo "ordenar" del modulo indicado
 #
 # POR EJEMPLO PARA PROBAR HEAPSORT:
-# python src/probador.py heapsort resultados/heapsort.csv
+# python probador.py heapsort resultados/heapsort.csv
 # POR EJEMPLO PARA PROBAR PERO CASO DE HEAPSORT:
-# python src/probador.py heapsort resultados/heapsort.csv menorAMayor
+# python probador.py heapsort resultados/heapsort.csv menorAMayor
 #
 # PARA GENERAR LOS menorAMayor:
-# python src/deshacer.py menorAMayor
+# python src/utils/deshacer.py menorAMayor
 #
 # TODO ESTO ESTANDO PARADO EN LA RAIZ DEL REPO
 #
@@ -19,7 +19,7 @@ import time
 
 
 def probar(module_name, csv_name, amt):
-    ordenar = getattr(import_module("search." + module_name), "ordenar")
+    ordenar = getattr(import_module("src.search." + module_name), "ordenar")
     with open(csv_name, "r") as archivoCsv:
         lista = archivoCsv.read().split(",")[0:amt]
         lista = list(map(lambda x: float(x), lista))
