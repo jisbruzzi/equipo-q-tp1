@@ -22,10 +22,10 @@ def probar(module_name, csv_name, amt):
     ordenar = getattr(import_module(module_name), "ordenar")
     with open(csv_name, "r") as archivoCsv:
         lista = archivoCsv.read().split(",")[0:amt]
-        lista = map(lambda x: float(x), lista)
-        tiempoPrincipio = time.time()
+        lista = list(map(lambda x: float(x), lista))
+        time_start = time.time()
         ordenar(lista)
-        return time.time() - tiempoPrincipio
+        return time.time() - time_start
 
 
 print("primer argumento: modulo a probar")
