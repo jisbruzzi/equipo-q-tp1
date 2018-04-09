@@ -29,8 +29,7 @@ def gs():
             teams_prefs[i] = [int(line) for line in f.readlines()]
 
     matches = gale_shapely(teams_prefs, players_prefs)
-    for match in matches:
-        print(match)
+    print(matches)
 
 
 if __name__ == '__main__':
