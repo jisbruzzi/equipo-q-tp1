@@ -1,14 +1,21 @@
 def insertar(elemento,lista):
+	#l=len(lista)
+	#print(str(elemento)+"/"+str(lista))
+
 	lista = list(lista)
 	resultado = []
 	while len(lista) > 0:
-		e = lista.pop(0)
-		if e < elemento:
-			resultado = resultado + [e]
+		e = lista.pop()
+		if e >= elemento:
+			resultado = [e] + resultado
 		else:
-			lista=[e]+lista
+			lista = lista + [e]
 			break
-	return resultado+[elemento]+lista
+	#lr=len(resultado)
+	#print(str(lr)+"/"+str(l))
+	
+	
+	return lista + [elemento] + resultado
 
 def insercion(lista):
 	lista = list(lista)#copia
