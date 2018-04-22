@@ -13,14 +13,17 @@ def partition(lista, inf, sup):
 
 
 def quicksort(lista, inf, sup):
-    if inf < sup:
+    stack = [(inf, sup)]
+    while stack:
+        inf, sup = stack.pop()
         mid_point = partition(lista, inf, sup)
-        low_mid_point = mid_point
-        while inf < low_mid_point:
-            low_mid_point = partition(lista, inf, low_mid_point - 1)
 
-        while mid_point + 1 < sup:
-            mid_point = partition(lista, mid_point + 1, sup)
+        if mid_point > inf:
+            stack.append((inf, mid_point - 1))
+
+        if mid_point < sup:
+            stack.append((mid_point + 1, sup))
+
     return lista
 
 
