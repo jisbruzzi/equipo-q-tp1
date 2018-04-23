@@ -86,9 +86,10 @@ class GSTest(unittest.TestCase):
 
                     player_prefers_other_team = p[player][other_team] < p[player][team]
                     other_team_prefers_player = t[other_team][player] < t[other_team][other_player]
+                    both = player_prefers_other_team and other_team_prefers_player
 
                     team_prefers_other_player = t[team][other_player] < t[team][player]
                     other_player_prefers_team = p[other_player][team] < p[other_player][other_team]
+                    other_both = team_prefers_other_player and other_player_prefers_team
 
-                    self.assertFalse((player_prefers_other_team and other_team_prefers_player) or
-                                     (team_prefers_other_player and other_player_prefers_team))
+                    self.assertFalse(both or other_both)
